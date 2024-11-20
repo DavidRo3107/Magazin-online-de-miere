@@ -1,0 +1,27 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nume = htmlspecialchars($_POST["nume"]);
+    $telefon = htmlspecialchars($_POST["telefon"]);
+    $adresa = htmlspecialchars($_POST["adresa"]);
+    $cart = json_decode($_POST["cart"], true);
+
+    // Validare simplă
+    if ($nume && $telefon && $adresa && !empty($cart)) {
+        // Trimitere prin email sau salvare în bază de date
+        $mesaj = "Comandă nouă de la $nume.\n";
+        $mesaj .= "Telefon: $telefon\n";
+        $mesaj .= "Adresă: $adresa\n";
+        $mesaj .= "Produse comandate:\n";
+
+        foreach ($cart as $produs) {
+            $mesaj .= "- " . $produs["name"] . ": " . $produs["price"] . " RON\n";
+        }
+
+        // Exemplu trimitere email (înlocuiește cu datele tale)
+        mail("contact@exemplu.ro", "Comandă nouă", $mesaj);
+        echo "Comanda ta a fost procesată! Te vom contacta în curând.";
+    } else {
+        echo "Toate câmpurile sunt obligatorii!";
+    }
+}
+?>

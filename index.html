@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin Online de Miere</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header-ul site-ului -->
+    <header>
+        <h1>Magazin Online de Miere</h1>
+        <nav>
+            <a href="#produse">Produse</a> | 
+            <a href="#comanda">Coș de cumpărături</a>
+        </nav>
+    </header>
+
+    <!-- Secțiunea de produse -->
+    <section id="produse">
+        <h2>Produsele noastre</h2>
+        <div class="product">
+            <img src="miere_salcam.jpg" alt="Miere de salcâm" class="product-image">
+            <h3>Miere de Salcâm</h3>
+            <p>Preț: 35 RON/kg</p>
+            <button onclick="addToCart('Miere de Salcâm', 35)">Adaugă în coș</button>
+        </div>
+        <div class="product">
+            <img src="fagure_miere.jpg" alt="Fagure de miere" class="product-image">
+            <h3>Miere de Tei</h3>
+            <p>Preț: 30 RON/kg</p>
+            <button onclick="addToCart('Fagure de miere',30)">Adaugă în coș</button>
+        </div>
+    </section>
+
+    <!-- Secțiunea de coș -->
+    <section id="comanda">
+        <h2>Coș de cumpărături</h2>
+        <div id="cart-items">
+            <p>Coșul tău este gol.</p>
+        </div>
+        <form id="order-form" action="process_order.php" method="POST" style="display: none;">
+            <h3>Completează detaliile pentru comandă</h3>
+            <input type="text" name="nume" placeholder="Nume" required>
+            <input type="text" name="telefon" placeholder="Telefon" required>
+            <input type="text" name="adresa" placeholder="Adresă" required>
+            <input type="hidden" name="cart" id="cart-data">
+            <button type="submit">Trimite comanda</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
